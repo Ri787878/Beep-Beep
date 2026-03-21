@@ -308,9 +308,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '
-
-'
+  m_text: Dice_Roll
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -319,8 +317,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -390,52 +388,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 352436841}
   m_CullTransparentMesh: 1
---- !u!1 &389986012
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 389986014}
-  - component: {fileID: 389986013}
-  m_Layer: 0
-  m_Name: DiceTextPrinter
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &389986013
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 389986012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62c423389d9b7f84184b39fe21975114, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DiceResultUI
-  valueReader: {fileID: 848678205}
-  resultText: {fileID: 352436844}
---- !u!4 &389986014
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 389986012}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0071, y: 0.27483, z: -0.35}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &496959251 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6107470397332173520, guid: c7675d177a715e348afc15f0fd5012b2, type: 3}
@@ -460,29 +412,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 673391143}
-  - component: {fileID: 673391142}
   - component: {fileID: 673391144}
   m_Layer: 0
-  m_Name: DiceManager
+  m_Name: UIController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &673391142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 673391141}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6cbbc2914255d04798cd9d1fc7f25f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ReadAndStoreExample
-  valueReader: {fileID: 848678205}
-  lastRoll: 0
 --- !u!4 &673391143
 Transform:
   m_ObjectHideFlags: 0
@@ -495,7 +432,8 @@ Transform:
   m_LocalPosition: {x: 0.0071, y: 0.27483, z: -0.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1902052347}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &673391144
@@ -511,7 +449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DiceResultUI
   valueReader: {fileID: 848678205}
-  resultText: {fileID: 352436844}
+  Dice_Roll: {fileID: 352436844}
 --- !u!1001 &835982595
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1496,9 +1434,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 673391142}
-        m_TargetAssemblyTypeName: ReadAndStoreExample, Assembly-CSharp
-        m_MethodName: ReadNow
+      - m_Target: {fileID: 673391144}
+        m_TargetAssemblyTypeName: DiceResultUI, Assembly-CSharp
+        m_MethodName: ReadDiceAndShow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1570,12 +1508,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1902052346}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.0071, y: 3.72517, z: 0.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 673391143}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2103633683
 GameObject:
@@ -1609,13 +1547,18 @@ MonoBehaviour:
   diceRb: {fileID: 848678204}
   upwardImpulse: 3
   randomTorque: 2
+  sidewaysImpulse: 1
+  randomSpinTorque: 1
   teleportTarget: {fileID: 1902052347}
   teleportY: 1
   boardMin: {x: -9, y: 0, z: -5}
   boardMax: {x: 9, y: 0, z: 5}
   edgePadding: 0.3
-  sidewaysImpulse: 1
-  randomSpinTorque: 1
+  resultUI: {fileID: 673391144}
+  minRollTime: 0.25
+  maxWaitForSettle: 4
+  settleVelocity: 0.05
+  settleAngularVelocity: 0.05
 --- !u!4 &2103633685
 Transform:
   m_ObjectHideFlags: 0
@@ -1746,6 +1689,4 @@ SceneRoots:
   - {fileID: 1527446505}
   - {fileID: 2103633685}
   - {fileID: 835982595}
-  - {fileID: 1902052347}
   - {fileID: 673391143}
-  - {fileID: 389986014}
