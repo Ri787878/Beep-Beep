@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AutoScroll : MonoBehaviour
@@ -9,7 +11,9 @@ public class AutoScroll : MonoBehaviour
     public Transform playerTransform;
     public float spawnZ = 0.0f; // Where the next tile starts
     public int amountOfTiles = 10; // How many tiles on screen
+    public float scrollSpeed = 5f; // Speed at which tiles move
     private List<GameObject> activeTiles = new List<GameObject>();
+    [CanBeNull] private GameObject nextRequestedTile;
 
     void Start()
     {
@@ -36,9 +40,18 @@ public class AutoScroll : MonoBehaviour
 
     public void SpawnTile(Vector3 position)
     {
-        var index = UnityEngine.Random.Range(0, pathPrefabs.Length - 1);
-        GameObject go = Instantiate(pathPrefabs[index], position, Quaternion.identity);
-        activeTiles.Add(go);
+        if (nextRequestedTile != null)
+        {
+            GameObject go = Instantiate(nextRequestedTile, position, Quaternion.identity);
+            activeTiles.Add(go);
+            nextRequestedTile = null;
+        }
+        else
+        {
+            var index = UnityEngine.Random.Range(0, pathPrefabs.Length);
+            GameObject go = Instantiate(pathPrefabs[index], position, Quaternion.identity);
+            activeTiles.Add(go);
+        }
     }
 
     private void DeleteOldTile()
@@ -57,7 +70,12 @@ public class AutoScroll : MonoBehaviour
     {
         foreach (var tile in activeTiles)
         {
-            tile.transform.Translate(Vector3.back * (Time.deltaTime * 5));
+            tile.transform.Translate(Vector3.back * (Time.deltaTime * scrollSpeed));
         }
+    }
+    
+    public void RequestNextTile(GameObject tilePrefab)
+    {
+        nextRequestedTile = tilePrefab.GameObject();
     }
 }
