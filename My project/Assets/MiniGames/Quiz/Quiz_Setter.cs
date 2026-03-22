@@ -19,11 +19,13 @@ public class Quiz_Setter : MonoBehaviour
     [SerializeField] private TMP_Text Option_4;
 
     private int question;
+    public AudioSource audioSource;
+    public AudioClip[] sounds;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         question = Random.Range(1, 4);
-
+        PlayRandomSound();
         Set_Options();
         if (question == 1)
             Set_Image(targetImage, Image1);
@@ -40,16 +42,24 @@ public class Quiz_Setter : MonoBehaviour
     }
     public void Win()
     {
+        StopSound();
         GameController.EndMiniGame(true);
-        return ;
     }
 
     public void Lose()
     {
+        StopSound();
         GameController.EndMiniGame(false);
-        return;
     }
-    
+
+    public void StopSound()
+    {
+        if (audioSource != null)
+        {
+            audioSource.Stop();
+        }
+    }
+
     public void Read_Input(int scenario)
     {
         if (scenario == 1)
@@ -100,5 +110,15 @@ public class Quiz_Setter : MonoBehaviour
         Option_2.text = "2. Paragem de transito da Frente";
         Option_3.text = "3. Paragem de transito da Frente e da Reta Guarda";
         Option_4.text = "4. Olá amigos condutores :)";
+    }
+
+    public void PlayRandomSound()
+    {
+        if (sounds == null || sounds.Length == 0 || audioSource == null) return;
+
+        int index = Random.Range(0, sounds.Length);
+        audioSource.clip = sounds[index];
+        audioSource.loop = true;
+        audioSource.Play();
     }
 }
