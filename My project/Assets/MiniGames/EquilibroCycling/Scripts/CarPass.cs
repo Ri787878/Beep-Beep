@@ -24,6 +24,10 @@ public class CarPass : MonoBehaviour
         }
         else
         {
+            var audioSource = GetComponent<AudioSource>();
+            
+            audioSource.mute = false;
+            audioSource.loop = false;
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
             
             GameObject Player = GameObject.FindGameObjectWithTag("Player");

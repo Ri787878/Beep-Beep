@@ -47,6 +47,7 @@ public class Quiz_Setter : MonoBehaviour
     public void Lose()
     {
         GameController.EndMiniGame(false);
+        return;
     }
     
     public void Read_Input(int scenario)
