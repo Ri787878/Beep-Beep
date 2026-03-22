@@ -8,6 +8,7 @@ public class Timer : MonoBehaviour
     private float currentTime = 0f;
     public bool countDown = true; // If true, timer counts down from timeLimit to 0. If false, counts up from 0 to timeLimit.
     private TextMeshProUGUI timerText;
+    public bool wins = true;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,7 +35,7 @@ public class Timer : MonoBehaviour
 
         if ((countDown && currentTime <= 0) || (!countDown && currentTime >= timeLimit))
         {
-            GameController.EndMiniGame(true);
+            GameController.EndMiniGame(wins);
         }
     }
 }

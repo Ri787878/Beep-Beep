@@ -13,12 +13,12 @@ public class GameController : MonoBehaviour
     public int currentPlayer = 0;
     public int[] playerPositions = new int[3];
     public List<string> minigameNames = new List<string>();
+    public bool hasEnded = false;
+    public int winnerId = 0;
     private DiceValueReader dice;
     private static int lastDiceValue;
     
-    private bool canMovePlayer = false;
-    private bool canChangeTurn = false;
-
+    
     void Start()
     {
         DontDestroyOnLoad(gameObject);
@@ -55,9 +55,24 @@ public class GameController : MonoBehaviour
         NextTurn();
     }
 
-    public static void EndGame()
+    public static void EndGame(int winnerPlayerId)
     {
-        SceneManager.LoadScene("End"); //TODO
+        Instance.hasEnded = true;
+        Instance.winnerId = winnerPlayerId;
+    }
+
+    public static void GoBackToMainMenu()
+    {
+        ResetController();
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    private static void ResetController()
+    {
+        Instance.numberOfPlayers = 0;
+        Instance.currentPlayer = 0;
+        Instance.playerPositions = new int[3];
+        lastDiceValue = 0;
     }
     
     public static void NextTurn()
@@ -77,8 +92,7 @@ public class GameController : MonoBehaviour
     public static void EndMiniGame(bool won)
     {
         SceneManager.LoadScene(GAME_SCENE_NAME);
-
-
+        
         if (!won)
         {
             NextTurn();
@@ -113,7 +127,7 @@ public class GameController : MonoBehaviour
 
         if (newPosition >= 20)
         {
-            EndGame();
+            EndGame(playerId);
         }
 
         Instance.playerPositions[playerId - 1] = newPosition;

@@ -5017,6 +5017,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Timer
   timeLimit: 10
   countDown: 1
+  wins: 0
 --- !u!114 &2131724820
 MonoBehaviour:
   m_ObjectHideFlags: 0
