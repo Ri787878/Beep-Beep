@@ -46,9 +46,11 @@ public class WaitingMiniGame : MonoBehaviour
             timer -= Time.deltaTime;
         }
         if (lost)
-            MinigameManager.EndGame("Lose");
+            GameController.EndMiniGame(false);
+
         if (timer < 0)
-            MinigameManager.EndGame("Win");
+            GameController.EndMiniGame(true);
+
     }
     void Reset()
     {
@@ -65,7 +67,10 @@ public class WaitingMiniGame : MonoBehaviour
         if (audioSource != null && audioSource.isPlaying)
             audioSource.Stop();
 
-        MinigameManager.EndGame(result);
+        if (result == "win")
+            GameController.EndMiniGame(true);
+        else if (result == "lose")
+            GameController.EndMiniGame(false);
     }
 
 }

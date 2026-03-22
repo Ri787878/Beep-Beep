@@ -36,14 +36,14 @@ public class CrossingAction : MonoBehaviour
             }
             else
             {
-                MinigameManager.EndGame("Lose");
                 autoScroll.scrollSpeed = 0;
+                //GameController.EndMiniGame(false);
             }
             
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                MinigameManager.EndGame("Win");
                 autoScroll.scrollSpeed = 0;
+                GameController.EndMiniGame(true);
             }
         }
     }

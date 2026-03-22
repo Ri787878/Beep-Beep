@@ -1,0 +1,25 @@
+using UnityEngine;
+using UnityEngine.InputSystem.HID;
+using UnityEngine.UI;
+
+public class OnClick : MonoBehaviour
+{
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        Button button = GetComponent<Button>();
+        
+        var dice = GameObject.FindWithTag("DiceController").GetComponent<DiceRollButtonController>();
+        
+        button.onClick.AddListener(() => {;
+            dice.OnRollButtonClicked();
+        });
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}

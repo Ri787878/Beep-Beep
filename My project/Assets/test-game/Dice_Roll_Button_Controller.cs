@@ -1,8 +1,12 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class DiceRollButtonController : MonoBehaviour
 {
+    public static DiceRollButtonController Instance;
+    
     [Header("Dice")]
     [SerializeField] private Rigidbody diceRb;
 
@@ -31,6 +35,10 @@ public class DiceRollButtonController : MonoBehaviour
     [SerializeField] private float settleAngularVelocity = 0.05f;
 
     private Coroutine _rollRoutine;
+
+    private void Start()
+    {
+    }
 
     public void OnRollButtonClicked()
     {
@@ -106,8 +114,10 @@ public class DiceRollButtonController : MonoBehaviour
 
         // Update UI after settle.
         if (resultUI != null)
-            resultUI.ReadDiceAndShow();
-
+        {
+            var result = resultUI.ReadDiceAndShow();
+            GameController.LoadNextMiniGame(result);
+        }
         _rollRoutine = null;
     }
 

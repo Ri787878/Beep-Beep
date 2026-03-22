@@ -11,6 +11,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/test-game/Game-Scene.unity
     guid: 243f545cb8c5ef447a7d2c6da5cb2eef
+  - enabled: 1
+    path: Assets/MiniGames/Atropelar/Atropelar.unity
+    guid: 0171776773bf1427fabf0d3e98352924
+  - enabled: 1
+    path: Assets/MiniGames/EquilibroCycling/BalancoBike.unity
+    guid: 23ead672b6c21497f855b80aa4bf5b26
+  - enabled: 1
+    path: Assets/MiniGames/Estaciona/Estaciona1.unity
+    guid: bdf62e363aa5d415ab282e81616352ac
+  - enabled: 1
+    path: Assets/MiniGames/Estaciona/Estaciona2.unity
+    guid: 468475cd4a5c84335b79053d535d18a8
+  - enabled: 1
+    path: Assets/MiniGames/WaitingGame/WaitingScene.unity
+    guid: 57f303e407a73b74b86064a81550f8d4
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

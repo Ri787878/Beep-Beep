@@ -36,7 +36,7 @@ public class PlayerWabble : MonoBehaviour
     
         if (currentRotation.z > 90 || currentRotation.z < -90)
         {
-            MinigameManager.EndGame("Lose");
+            GameController.EndMiniGame(false);
         }
     }
 
@@ -45,13 +45,3 @@ public class PlayerWabble : MonoBehaviour
         this.transform.Rotate(Vector3.forward * rotationAddded);
     }
 }
-
-public class MinigameManager : MonoBehaviour
-{
-    public static void EndGame(string result)
-    {
-        Debug.Log("Game ended with result: " + result);
-        // Implement game end logic here (e.g., show results, reset game, etc.)
-    }
-}
-
