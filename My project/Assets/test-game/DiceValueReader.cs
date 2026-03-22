@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 public class DiceValueReader : MonoBehaviour
 {
+    public static DiceValueReader Instance { get; private set; }
     [System.Serializable]
     public class Face
     {
@@ -13,6 +15,10 @@ public class DiceValueReader : MonoBehaviour
     [SerializeField] private Face[] faces;
 
     public int CurrentTopValue { get; private set; }
+    
+    private void Start()
+    {
+    }
 
     public int ReadTopValue()
     {
