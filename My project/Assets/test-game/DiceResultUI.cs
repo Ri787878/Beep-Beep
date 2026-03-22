@@ -15,6 +15,7 @@ public class DiceResultUI : MonoBehaviour
 
     private void Start()
     {
+        valueReader = GameObject.FindGameObjectWithTag("Dice").GetComponent<DiceValueReader>();
     }
 
     public int ReadDiceAndShow()

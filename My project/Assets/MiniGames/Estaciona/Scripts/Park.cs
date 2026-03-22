@@ -10,6 +10,7 @@ public class ParkingZone : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
-            MinigameManager.EndGame("Win");
+            GameController.EndMiniGame(true);
+
     }
 }

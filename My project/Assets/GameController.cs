@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Unity.VectorGraphics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public class GameController : MonoBehaviour
 {
     public static GameController Instance;
@@ -14,6 +15,9 @@ public class GameController : MonoBehaviour
     public List<string> minigameNames = new List<string>();
     private DiceValueReader dice;
     private static int lastDiceValue;
+    
+    private bool canMovePlayer = false;
+    private bool canChangeTurn = false;
 
     void Start()
     {
@@ -22,12 +26,16 @@ public class GameController : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            StartGame(1);
+            StartGame(2);
         }
         else
         {
             Destroy(this);
         }
+
+        playerPositions[0] = 0;
+        playerPositions[1] = 0;
+        playerPositions[2] = 0;
         
         dice = GameObject.FindGameObjectWithTag("Dice").gameObject.GetComponent<DiceValueReader>();
     }
@@ -35,6 +43,13 @@ public class GameController : MonoBehaviour
     public static void StartGame(int numberOfPlayers)
     {
         Instance.numberOfPlayers = numberOfPlayers;
+        
+        for (int i = 3; i > numberOfPlayers; i--)
+        {
+            var player = GameObject.FindGameObjectWithTag("Player" + i);
+            player.SetActive(false); 
+        }
+        
         NextTurn();
     }
 
@@ -74,24 +89,31 @@ public class GameController : MonoBehaviour
         
         NextTurn();
     }
-    
+/*
+    void OnSceneLoaded()
+    {
+        if (canMovePlayer)
+        {
+            var player = Instance.currentPlayer + 1;
+            MovePlayer(lastDiceValue, player);
+        }
+
+        if (canChangeTurn)
+        {
+            NextTurn();
+        }
+    }
+    */
     public static void MovePlayer(int diceValue, int playerId)
     {
-        GameObject player = GameObject.Find("Player" + playerId);
-        
         var currentPosition = Instance.playerPositions[playerId - 1];
-        var totalPlayerPositions = player.GetComponent<PlayerPositionController>().positions.Count;
-        var newPosition = (currentPosition + diceValue) % totalPlayerPositions; // Assuming there are 20 positions on the board
-        newPosition++;
+        var newPosition = currentPosition + diceValue; // Assuming there are 20 positions on the board
 
-        if (newPosition >= totalPlayerPositions)
+        if (newPosition >= 20)
         {
             EndGame();
         }
 
         Instance.playerPositions[playerId - 1] = newPosition;
-        
-        var position = player.GetComponent<PlayerPositionController>().positions[newPosition];
-        player.transform.position = position.transform.position;
     }
 }

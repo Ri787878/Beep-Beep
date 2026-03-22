@@ -9,8 +9,10 @@ public class OnClick : MonoBehaviour
     {
         Button button = GetComponent<Button>();
         
+        var dice = GameObject.FindWithTag("DiceController").GetComponent<DiceRollButtonController>();
+        
         button.onClick.AddListener(() => {;
-            DiceRollButtonController.Instance.OnRollButtonClicked();
+            dice.OnRollButtonClicked();
         });
         
     }

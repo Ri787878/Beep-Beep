@@ -37,7 +37,7 @@ public class CrossingAction : MonoBehaviour
             else
             {
                 autoScroll.scrollSpeed = 0;
-                GameController.EndMiniGame(false);
+                //GameController.EndMiniGame(false);
             }
             
             if (Input.GetKeyDown(KeyCode.Space))
