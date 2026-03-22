@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 using UnityEngine.UI;
 
 public class Quiz_Setter : MonoBehaviour

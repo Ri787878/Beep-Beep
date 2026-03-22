@@ -1520,6 +1520,8 @@ MonoBehaviour:
   sounds:
   - {fileID: 8300000, guid: 25a65b86312e76948ae878a548475dbf, type: 3}
   - {fileID: 8300000, guid: 9220f5a99e32c444daed8aa19f4a5eec, type: 3}
+  correct_sound: {fileID: 8300000, guid: 0bd5a3da375fdff43981201bf499286c, type: 3}
+  wrong_sound: {fileID: 8300000, guid: 286d65aab5e85ca448485bcd5314684f, type: 3}
 --- !u!4 &1639842779
 Transform:
   m_ObjectHideFlags: 0
