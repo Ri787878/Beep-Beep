@@ -40,14 +40,14 @@ public class Quiz_Setter : MonoBehaviour
     }
     public void Win()
     {
-        MinigameManager.EndGame("Win");
+        GameController.EndMiniGame(true);
         return ;
     }
 
     public void Lose()
     {
-        MinigameManager.EndGame("Lose");
-        return ;
+        GameController.EndMiniGame(false);
+        return;
     }
     
     public void Read_Input(int scenario)
