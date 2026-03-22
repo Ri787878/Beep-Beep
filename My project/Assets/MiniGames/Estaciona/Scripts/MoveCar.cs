@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class MoveCar : MonoBehaviour
@@ -89,4 +90,19 @@ public class MoveCar : MonoBehaviour
 
         currentSpeed = Mathf.MoveTowards(currentSpeed, 0f, brakeForce * Time.fixedDeltaTime);
     }
+
+    /*
+    private void OnCollisionEnter(Collision other)
+    {
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+        if (audioSources.Length > 0)
+        {
+            var randomIndex = UnityEngine.Random.Range(0, audioSources.Length);
+            
+            AudioSource collisionSound = audioSources[randomIndex];
+            collisionSound.Play();
+            collisionSound.playOnAwake = true;
+
+        }
+    }*/
 }
