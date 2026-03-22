@@ -26,7 +26,7 @@ public class GameController : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            StartGame(2);
+            StartGame();
         }
         else
         {
@@ -40,8 +40,10 @@ public class GameController : MonoBehaviour
         dice = GameObject.FindGameObjectWithTag("Dice").gameObject.GetComponent<DiceValueReader>();
     }
     
-    public static void StartGame(int numberOfPlayers)
+    public static void StartGame()
     {
+        var numberOfPlayers = PlayerPrefs.GetInt("NumPlayers", 1);
+        
         Instance.numberOfPlayers = numberOfPlayers;
         
         for (int i = 3; i > numberOfPlayers; i--)
